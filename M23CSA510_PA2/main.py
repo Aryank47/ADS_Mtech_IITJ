@@ -9,11 +9,10 @@ from ordered_array import OrderedArray
 faker = Faker()
 
 
-# Inserting Records and Measuring Time
 def benchmark(func):
     def wrapper(*args, **kwargs):
         fn_name = func.__name__
-        print(f"Benchmarking loops in {fn_name}")
+        print(f"Benchmarking {fn_name}")
 
         # Start time
         start_time = time.time()
@@ -60,14 +59,22 @@ def successful_Btree_search(b_tree: BTree, employee: Employee):
 
 @benchmark
 def unsuccessful_oa_search(ordered_array: OrderedArray):
-    print(
-        f"UnSuccessful Ordered Array Search Result:" f" {ordered_array.search(4534354)}"
-    )
+    print(f"UnSuccessful Ordered Array Search Result: {ordered_array.search(4534354)}")
 
 
 @benchmark
 def unsuccessful_Btree_search(b_tree: BTree):
     print(f"UnSuccessful B-Tree Search Result: {b_tree.search(4534354)}")
+
+
+@benchmark
+def successful_oa_delete(ordered_array: OrderedArray, employee: Employee):
+    ordered_array.delete(employee.employee_id)
+
+
+@benchmark
+def successful_Btree_delete(b_tree: BTree, employee: Employee):
+    b_tree.delete(employee)
 
 
 def main():
@@ -96,6 +103,23 @@ def main():
 
     unsuccessful_oa_search(ordered_array)
     unsuccessful_Btree_search(b_tree)
+
+    successful_oa_delete(ordered_array, search_employee)
+    successful_oa_search(ordered_array, search_employee)
+    print(f"Is Array sorted after deleting employee? -> {ordered_array.is_sorted()} \n")
+
+    # print("\n\n")
+    # b_tree.print_btree()
+
+    successful_Btree_search(b_tree, search_employee)
+    successful_Btree_delete(b_tree, search_employee)
+
+    successful_Btree_delete(b_tree, search_employee)
+
+    successful_Btree_delete(b_tree, employee_records[1344])
+    successful_Btree_search(b_tree, employee_records[1344])
+
+    successful_Btree_delete(b_tree, employee_records[1344])
 
 
 main()
