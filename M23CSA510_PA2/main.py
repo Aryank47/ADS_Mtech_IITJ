@@ -47,24 +47,30 @@ def Btree_insert(b_tree: BTree, employee_records: list[Employee]):
 @benchmark
 def successful_oa_search(ordered_array: OrderedArray, employee: Employee):
     print(
-        f"Successful Ordered Array Search Result:"
+        f"Successful Ordered Array Search Result for 10000 employees records:"
         f" {ordered_array.search(employee.employee_id)}"
     )
 
 
 @benchmark
 def successful_Btree_search(b_tree: BTree, employee: Employee):
-    print(f"Successful B-Tree Search Result: {b_tree.search(employee.employee_id)}")
+    print(
+        f"Successful B-Tree Search Result for 10000 employees records: {b_tree.search(employee.employee_id)}"
+    )
 
 
 @benchmark
 def unsuccessful_oa_search(ordered_array: OrderedArray):
-    print(f"UnSuccessful Ordered Array Search Result: {ordered_array.search(4534354)}")
+    print(
+        f"UnSuccessful Ordered Array Search Result for 10000 employees records: {ordered_array.search(4534354)}"
+    )
 
 
 @benchmark
 def unsuccessful_Btree_search(b_tree: BTree):
-    print(f"UnSuccessful B-Tree Search Result: {b_tree.search(4534354)}")
+    print(
+        f"UnSuccessful B-Tree Search Result for 10000 employees records: {b_tree.search(4534354)}"
+    )
 
 
 @benchmark
